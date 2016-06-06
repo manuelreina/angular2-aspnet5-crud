@@ -1,8 +1,8 @@
-﻿import { Component, OnInit } from 'angular2/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { HttpCRUDService } from '../../services/http-crud.service';
 import { EnvConstants } from '../../constants/environments.constant';
 import { ResponsiveTableComponent, IColumnConfig, ITableData } from '../../components.shared/responsive-table/responsive-table.component';
-import {Router} from 'angular2/router';
+import {Router} from '@angular/router-deprecated';
 
 
 @Component({

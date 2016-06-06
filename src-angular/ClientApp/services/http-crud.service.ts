@@ -1,5 +1,5 @@
-﻿import {Injectable} from 'angular2/core';
-import {Http, Headers, RequestOptionsArgs} from 'angular2/http';
+﻿import {Injectable} from '@angular/core';
+import {Http, Headers, RequestOptionsArgs, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -32,14 +32,14 @@ export class HttpCRUDService<T> {
     getAll(options?: RequestOptionsArgs): Observable<T[]> {
         //this._spinnerService.show();
         var result = this._http.get(this._url)
-            .map<T[]>(r => r.json());
+            .map<T[]>((r) => r.json());
                 
         return result;
     }
 
     get(id:number, options?: RequestOptionsArgs): Observable<T> {
         var result = this._http.get(`${this._url}/${id}`)
-            .map<T>(r => r.json());
+            .map<T>((r) => r.json());
         return result;
     }
 
@@ -49,7 +49,7 @@ export class HttpCRUDService<T> {
         var result = this._http.put(this._url,
             JSON.stringify(entity),
             { headers: this._headers })
-            .map<T>(r => r.json())
+            .map<T>((r) => r.json())
             .finally(() => {
                 //_this._spinnerService.hide();
                 var message = toastMessage ? toastMessage : "Updated successfully";
@@ -62,14 +62,14 @@ export class HttpCRUDService<T> {
         var result = this._http.post(this._url,
             JSON.stringify(entity),
             { headers: this._headers })
-            .map<T>(r => r.json());
+            .map<T>((r) => r.json());
         return result;
     }
 
     delete(id: number, toastMessage?: string): Observable<T> {
         //this._spinnerService.show();
         var result = this._http.delete(`${this._url}/${id}`)
-            .map<T>(r => r.json());
+            .map<T>((r) => r.json());
         return result;
     }
 }

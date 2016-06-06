@@ -1,12 +1,13 @@
-import 'angular2/bundles/angular2-polyfills';
+require('zone.js');
 import 'bootstrap';
+import 'reflect-metadata';
 import './styles/site.css';
 //TODO: import css from component itself
 import './components.shared/responsive-table/responsive-table.component.css';
-import { bootstrap } from 'angular2/platform/browser';
-import { FormBuilder } from 'angular2/common';
-import * as router from 'angular2/router';
-import { Http, HTTP_PROVIDERS } from 'angular2/http';
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { FormBuilder } from '@angular/common';
+import * as router from '@angular/router-deprecated';
+import { Http, HTTP_PROVIDERS } from '@angular/http';
 import { App } from './components/app/app';
 
 bootstrap(App, [router.ROUTER_BINDINGS, HTTP_PROVIDERS, FormBuilder]);

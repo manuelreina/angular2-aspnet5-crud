@@ -1,5 +1,5 @@
 ﻿
-import { Component, EventEmitter, Input, Output, OnInit } from 'angular2/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FilterTextComponent } from '../filter-text/filter-text.component';
 export interface IColumnConfig {
     name: string;

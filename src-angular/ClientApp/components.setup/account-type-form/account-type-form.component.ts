@@ -1,9 +1,9 @@
-﻿import { Component, Input, OnInit, OnDestroy } from 'angular2/core';
+﻿import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { HttpCRUDService } from '../../services/http-crud.service';
 import { EnvConstants } from '../../constants/environments.constant';
-import { CanDeactivate, RouteParams, ROUTER_DIRECTIVES, Router, Location } from 'angular2/router';
+import { CanDeactivate, RouteParams, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
 import { Subscription } from 'rxjs/Rx';
-import {FORM_DIRECTIVES, Validators, FormBuilder, ControlGroup} from 'angular2/common';
+import {FORM_DIRECTIVES, Validators, FormBuilder, ControlGroup} from '@angular/common';
 
 @Component({
     selector: 'account-type-form',
@@ -18,8 +18,7 @@ export class AccountTypeFormComponent implements OnDestroy, OnInit {
         private routeParams: RouteParams,
         private fb: FormBuilder,
         private router: Router,
-        private envConstants: EnvConstants,
-        private location: Location) {
+        private envConstants: EnvConstants) {
         //this.accountType = { accountTypeID: 0, accountTypeName: 'asdfasdf', isBank: true };
         this.builtWithForm = fb.group({
             'name': ['', Validators.required]
@@ -79,7 +78,7 @@ export class AccountTypeFormComponent implements OnDestroy, OnInit {
 
     back(): void {
         //this.router.navigate(['AccountType']);
-        this.location.back();
+        //this.location.back();
     }
     
 }
