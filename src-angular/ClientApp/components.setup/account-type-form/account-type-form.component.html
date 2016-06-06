@@ -1,0 +1,25 @@
+﻿<form [ngFormModel]="BuiltWithForm">
+    <div  *ngIf="builtWith"
+         flex="50" flex-xs="100" flex-sm="100">
+        <input type="text" ngControl="name"
+               id="name"
+               [(ngModel)]="builtWith.name"
+               required />
+        <div layout="row" >
+            <input type="checkbox" [(checked)]="builtWith.pending"
+                        aria-label="Pending" />
+            
+            Pending
+        </div>
+        <div>
+            <button 
+                    (click)="submit()">
+                Submit
+            </button>
+            <button 
+                    (click)="back()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</form>

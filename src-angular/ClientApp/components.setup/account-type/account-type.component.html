@@ -1,0 +1,11 @@
+﻿
+<div >
+    <responsive-table [tableData]="tableData"
+                      (switchEventChanged)="update($event)"
+                      (editEventClicked)="gotoDetail($event)"
+                      (deleteEventClicked)="delete($event)"
+                      (refreshEventClicked)="getDataList($event)"
+                      (newEventClicked)="new($event)"
+                      [filterColumns]="['name']">
+    </responsive-table>
+</div>

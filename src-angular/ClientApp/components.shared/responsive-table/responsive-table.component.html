@@ -1,0 +1,71 @@
+﻿<!-- Responsive table starts here -->
+<!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+<!--<div class="button-action" >
+    <button (click)="refreshClicked($event)"
+            type="button" class="btn btn-default" aria-label="Bold">
+        <span class="glyphicon glyphicon-refresh"></span>
+    </button>
+    <button (click)="newClicked($event)"
+            type="button" class="btn btn-default" aria-label="Bold">
+        <span class="glyphicon glyphicon-plus"></span>
+    </button>
+</div>-->
+<filter-text (changed)="filterChanged($event)"
+             *ngIf="filterColumns.length > 0">
+</filter-text>
+<div class="table-responsive-vertical shadow-z-1">
+    <!-- Table starts here -->
+    <table id="table" class="table table-hover table-mc-light-blue">
+        <thead>
+            <tr>
+                <th *ngFor="#column of tableData.columnConfigList">
+                    {{column.header}}
+                </th>
+                <th class="table-action">
+                    <div>
+
+                        <button (click)="refreshClicked($event)"
+                                type="button" class="btn btn-default" aria-label="Bold">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                        <button (click)="newClicked($event)"
+                                type="button" class="btn btn-default" aria-label="Bold">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="#item of tableData.dataList">
+                <td *ngFor="#column of tableData.columnConfigList"
+                    data-title="{{column.header}}">
+                    <div *ngIf="column.type == 'text'" class="cell-text">
+                        {{item[column.name]}}
+                    </div>
+                    <div>
+                        <input type="checkbox" *ngIf="column.type == 'switch'"
+                               [checked]="item[column.name]" aria-label="column.header"
+                               (click)="switchChanged($event, item)" />
+
+                    </div>
+
+                </td>
+                <td>
+                    <div>
+                        <button (click)="editClicked($event, item)"
+                                type="button" class="btn btn-default" aria-label="Bold">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </button>
+                        <button (click)="deleteClicked($event, item)"
+                                type="button" class="btn btn-default" aria-label="Bold">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
