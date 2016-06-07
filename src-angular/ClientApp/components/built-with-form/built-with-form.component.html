@@ -1,11 +1,11 @@
-﻿<form [ngFormModel]="BuiltWithForm">
+﻿<form [ngFormModel]="builtWithForm">
     <div  *ngIf="builtWith"
          flex="50" flex-xs="100" flex-sm="100">
         <input type="text" ngControl="name"
                id="name"
                [(ngModel)]="builtWith.name"
                required />
-        <div layout="row" >
+        <div >
             <input type="checkbox" [(checked)]="builtWith.pending"
                         aria-label="Pending" />
             

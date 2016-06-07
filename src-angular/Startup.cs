@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using AngularUniversal.Services;
 
 namespace AngularUniversal
 {
@@ -33,6 +34,9 @@ namespace AngularUniversal
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             });
+
+            //using Dependency Injection
+            services.AddSingleton<ICRUDRepository, CRUDRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

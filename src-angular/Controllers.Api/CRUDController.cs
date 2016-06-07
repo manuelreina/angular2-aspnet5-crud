@@ -5,34 +5,30 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using AngularUniversal.Models;
 using System.Net;
+using AngularUniversal.Services;
 
 namespace AngularUniversal.Controllers
 {
     [Route("api/[controller]")]
     public class CRUDController : Controller
     {
-        private List<BuiltWith> builtWithList;
+        public ICRUDRepository CRUDRepository { get; set; }
 
-        public CRUDController()
+        public CRUDController(ICRUDRepository _CRUDRepository)
         {
-            builtWithList = new List<BuiltWith>
-            {
-                new BuiltWith { ID = 1, Name = "Angular 2", Pending = false },
-                new BuiltWith { ID = 2, Name = "Asp.net Core", Pending = false },
-                new BuiltWith { ID = 3, Name = "Webpack", Pending = false },
-            };
+            CRUDRepository = _CRUDRepository;
         }
         
         [HttpGet]
         public IEnumerable<BuiltWith> Get()
         {
-            return builtWithList;
+            return CRUDRepository.GetAll();
         }
         
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var builtWith = builtWithList.FirstOrDefault(bw => bw.ID == id);
+            var builtWith = CRUDRepository.Find(id);
             if (builtWith != null)
             {
                 return Ok(builtWith);
@@ -44,26 +40,25 @@ namespace AngularUniversal.Controllers
         }
         
         [HttpPost]
-        public IActionResult Post(BuiltWith builtWith)
+        public IActionResult Post([FromBody] BuiltWith builtWith)
         {
-            builtWithList.Add(builtWith);
+            CRUDRepository.Add(builtWith);
             return Ok(builtWith);
         }
         
-        [HttpPut("{id}")]
-        public IActionResult Put(BuiltWith builtWith)
+        [HttpPut]
+        public IActionResult Put([FromBody] BuiltWith builtWith)
         {
-            var duplicate = builtWithList.Any(bw => bw.Name == builtWith.Name && bw.ID != builtWith.ID);
+            var duplicate = CRUDRepository.AnyDuplicate(builtWith);
             if (duplicate)
             {
                 return new HttpStatusCodeResult((int)HttpStatusCode.Conflict);
             }
             else
             {
-                var update = builtWithList.FirstOrDefault(bw => bw.ID == builtWith.ID);
-                if (update != null)
+                var update = CRUDRepository.Update(builtWith);
+                if (update)
                 {
-                    update = builtWith;
                     return Ok(builtWith);
                 }
                 else
@@ -71,17 +66,16 @@ namespace AngularUniversal.Controllers
                     return HttpNotFound();
                 }
             }
-            
+            //return builtWith;
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var delete = builtWithList.FirstOrDefault(bw => bw.ID == id);
-            if (delete != null)
+            var delete = CRUDRepository.Remove(id);
+            if (delete )
             {
-                builtWithList.Remove(delete);
                 return Ok(delete);
             }
             else

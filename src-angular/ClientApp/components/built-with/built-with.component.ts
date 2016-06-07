@@ -6,11 +6,11 @@ import {Router} from '@angular/router-deprecated';
 
 
 @Component({
-    selector: 'account-type',
-    template: require('./account-type.component.html'),
+    selector: 'built-with',
+    template: require('./built-with.component.html'),
     directives: [ResponsiveTableComponent]
 })
-export class AccountTypeComponent implements OnInit {
+export class BuiltWithComponent implements OnInit {
 
     tableData: ITableData = { columnConfigList: [], crud: false, dataList: [], refresh: false };
 
@@ -66,15 +66,15 @@ export class AccountTypeComponent implements OnInit {
     }
 
     delete(builtWith: IBuiltWith) {
-        //this.httpCRUDService.delete(accountType.accountTypeID)
-        //    .subscribe(r =>
-        //    {
-        //        for (var i = 0; i < this.tableData.dataList.length; i++) {
-        //            if (this.tableData.dataList[i].accountTypeID == accountType.accountTypeID) {
-        //                this.tableData.dataList.splice(i, 1);
-        //                break;
-        //            }
-        //        }
-        //    });
+        this.httpCRUDService.delete(builtWith.id)
+            .subscribe(r =>
+            {
+                for (var i = 0; i < this.tableData.dataList.length; i++) {
+                    if (this.tableData.dataList[i].id == builtWith.id) {
+                        this.tableData.dataList.splice(i, 1);
+                        break;
+                    }
+                }
+            });
     }
 }

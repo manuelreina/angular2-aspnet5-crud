@@ -44,7 +44,7 @@ export class HttpCRUDService<T> {
         return result;
     }
 
-    update(entity: T, options?: RequestOptionsArgs, toastMessage?: string): Observable<T> {
+    update(entity: any, options?: RequestOptionsArgs, toastMessage?: string): Observable<any> {
         //this._spinnerService.show();
         
         var result = this._http.put(this._url,

@@ -5,8 +5,8 @@ import { NavMenu } from '../nav-menu/nav-menu';
 import { Home } from '../home/home';
 import { FetchData } from '../fetch-data/fetch-data';
 import { Counter } from '../counter/counter';
-import { AccountTypeComponent } from '../../components.setup/account-type/account-type.component';
-import { AccountTypeFormComponent } from '../../components.setup/account-type-form/account-type-form.component';
+import { BuiltWithComponent } from '../../components/built-with/built-with.component';
+import { BuiltWithFormComponent } from '../../components/built-with-form/built-with-form.component';
 import {EnvConstants} from '../../constants/environments.constant';
 import { HttpCRUDService } from '../../services/http-crud.service';
 import 'rxjs/add/operator/map';
@@ -24,8 +24,8 @@ import 'rxjs/add/operator/map';
     { path: '/', component: Home, name: 'Home' },
     { path: '/counter', component: Counter, name: 'Counter' },
     { path: '/fetch-data', component: FetchData, name: 'FetchData' },
-    { path: '/account-type', component: AccountTypeComponent, name: 'AccountType' },
-    { path: '/account-type-form/:id', name: 'AccountTypeForm', component: AccountTypeFormComponent }
+    { path: '/built-with', component: BuiltWithComponent, name: 'BuiltWith' },
+    { path: '/built-with-form/:id', name: 'BuiltWithForm', component: BuiltWithFormComponent }
 ])
 export class App {
 }

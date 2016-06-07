@@ -6,11 +6,11 @@ import { Subscription } from 'rxjs/Rx';
 import {FORM_DIRECTIVES, Validators, FormBuilder, ControlGroup} from '@angular/common';
 
 @Component({
-    selector: 'account-type-form',
-    template: require('./account-type-form.component.html'),
+    selector: 'built-with-form',
+    template: require('./built-with-form.component.html'),
     directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES]
 })
-export class AccountTypeFormComponent implements OnDestroy, OnInit {
+export class BuiltWithFormComponent implements OnDestroy, OnInit {
     private _subscription: Subscription;
     builtWith: IBuiltWith;
     builtWithForm: ControlGroup;
@@ -19,7 +19,6 @@ export class AccountTypeFormComponent implements OnDestroy, OnInit {
         private fb: FormBuilder,
         private router: Router,
         private envConstants: EnvConstants) {
-        //this.accountType = { accountTypeID: 0, accountTypeName: 'asdfasdf', isBank: true };
         this.builtWithForm = fb.group({
             'name': ['', Validators.required]
         });
@@ -56,21 +55,20 @@ export class AccountTypeFormComponent implements OnDestroy, OnInit {
 
     submit(): void {
         var formMode = this.routeParams.get('formMode');
-        var _this = this;
-        if (formMode == 'edit') {
+        if (formMode == 'edit') { 
             this.httpCRUDService
                 .update(this.builtWith)
                 .subscribe(r => {
-                    _this.builtWith = r;
-                    _this.router.navigate(['AccountType', {}]);
+                    this.builtWith = r;
+                    this.router.navigate(['BuiltWith', {}]);
                 });
         }
         else {
             this.httpCRUDService
                 .insert(this.builtWith)
                 .subscribe(r => {
-                    _this.builtWith = r;
-                    _this.router.navigate(['AccountType', {}]);
+                    this.builtWith = r;
+                    this.router.navigate(['BuiltWith', {}]);
                 });
         }
 

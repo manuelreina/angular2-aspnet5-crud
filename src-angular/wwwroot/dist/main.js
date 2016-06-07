@@ -65905,24 +65905,6 @@
 
 /***/ },
 /* 400 */
-/*!***************************************************************************************!*\
-  !*** ./ClientApp/components.setup/account-type-form/account-type-form.component.html ***!
-  \***************************************************************************************/
-/***/ function(module, exports) {
-
-	module.exports = "<form [ngFormModel]=\"BuiltWithForm\">\r\n    <div  *ngIf=\"builtWith\"\r\n         flex=\"50\" flex-xs=\"100\" flex-sm=\"100\">\r\n        <input type=\"text\" ngControl=\"name\"\r\n               id=\"name\"\r\n               [(ngModel)]=\"builtWith.name\"\r\n               required />\r\n        <div layout=\"row\" >\r\n            <input type=\"checkbox\" [(checked)]=\"builtWith.pending\"\r\n                        aria-label=\"Pending\" />\r\n            \r\n            Pending\r\n        </div>\r\n        <div>\r\n            <button \r\n                    (click)=\"submit()\">\r\n                Submit\r\n            </button>\r\n            <button \r\n                    (click)=\"back()\">\r\n                Cancel\r\n            </button>\r\n        </div>\r\n    </div>\r\n</form>\r\n"
-
-/***/ },
-/* 401 */
-/*!*****************************************************************************!*\
-  !*** ./ClientApp/components.setup/account-type/account-type.component.html ***!
-  \*****************************************************************************/
-/***/ function(module, exports) {
-
-	module.exports = "\r\n<div >\r\n    <responsive-table [tableData]=\"tableData\"\r\n                      (switchEventChanged)=\"update($event)\"\r\n                      (editEventClicked)=\"gotoDetail($event)\"\r\n                      (deleteEventClicked)=\"delete($event)\"\r\n                      (refreshEventClicked)=\"getDataList($event)\"\r\n                      (newEventClicked)=\"new($event)\"\r\n                      [filterColumns]=\"['name']\">\r\n    </responsive-table>\r\n</div>"
-
-/***/ },
-/* 402 */
 /*!****************************************************************************!*\
   !*** ./ClientApp/components.shared/filter-text/filter-text.component.html ***!
   \****************************************************************************/
@@ -65931,7 +65913,7 @@
 	module.exports = "<div >\r\n    <label for=\"filterText\">Filter</label>\r\n    <input type=\"text\" class=\"form-control\"\r\n           id=\"filterText\"\r\n           [value]=\"filter\"\r\n           (input)=\"filter = $event.target.value\"\r\n           (keyup)=\"filterChanged($event)\" />\r\n</div>"
 
 /***/ },
-/* 403 */
+/* 401 */
 /*!**************************************************************************************!*\
   !*** ./ClientApp/components.shared/responsive-table/responsive-table.component.html ***!
   \**************************************************************************************/
@@ -65940,13 +65922,31 @@
 	module.exports = "<!-- Responsive table starts here -->\r\n<!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->\r\n<!--<div class=\"button-action\" >\r\n    <button (click)=\"refreshClicked($event)\"\r\n            type=\"button\" class=\"btn btn-default\" aria-label=\"Bold\">\r\n        <span class=\"glyphicon glyphicon-refresh\"></span>\r\n    </button>\r\n    <button (click)=\"newClicked($event)\"\r\n            type=\"button\" class=\"btn btn-default\" aria-label=\"Bold\">\r\n        <span class=\"glyphicon glyphicon-plus\"></span>\r\n    </button>\r\n</div>-->\r\n<filter-text (changed)=\"filterChanged($event)\"\r\n             *ngIf=\"filterColumns.length > 0\">\r\n</filter-text>\r\n<div class=\"table-responsive-vertical shadow-z-1\">\r\n    <!-- Table starts here -->\r\n    <table id=\"table\" class=\"table table-hover table-mc-light-blue\">\r\n        <thead>\r\n            <tr>\r\n                <th *ngFor=\"#column of tableData.columnConfigList\">\r\n                    {{column.header}}\r\n                </th>\r\n                <th class=\"table-action\">\r\n                    <div>\r\n\r\n                        <button (click)=\"refreshClicked($event)\"\r\n                                type=\"button\" class=\"btn btn-default\" aria-label=\"Bold\">\r\n                            <span class=\"glyphicon glyphicon-refresh\"></span>\r\n                        </button>\r\n                        <button (click)=\"newClicked($event)\"\r\n                                type=\"button\" class=\"btn btn-default\" aria-label=\"Bold\">\r\n                            <span class=\"glyphicon glyphicon-plus\"></span>\r\n                        </button>\r\n\r\n                    </div>\r\n                </th>\r\n            </tr>\r\n        </thead>\r\n        <tbody>\r\n            <tr *ngFor=\"#item of tableData.dataList\">\r\n                <td *ngFor=\"#column of tableData.columnConfigList\"\r\n                    data-title=\"{{column.header}}\">\r\n                    <div *ngIf=\"column.type == 'text'\" class=\"cell-text\">\r\n                        {{item[column.name]}}\r\n                    </div>\r\n                    <div>\r\n                        <input type=\"checkbox\" *ngIf=\"column.type == 'switch'\"\r\n                               [checked]=\"item[column.name]\" aria-label=\"column.header\"\r\n                               (click)=\"switchChanged($event, item)\" />\r\n\r\n                    </div>\r\n\r\n                </td>\r\n                <td>\r\n                    <div>\r\n                        <button (click)=\"editClicked($event, item)\"\r\n                                type=\"button\" class=\"btn btn-default\" aria-label=\"Bold\">\r\n                            <span class=\"glyphicon glyphicon-edit\"></span>\r\n                        </button>\r\n                        <button (click)=\"deleteClicked($event, item)\"\r\n                                type=\"button\" class=\"btn btn-default\" aria-label=\"Bold\">\r\n                            <span class=\"glyphicon glyphicon-remove\"></span>\r\n                        </button>\r\n\r\n                    </div>\r\n                </td>\r\n            </tr>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n"
 
 /***/ },
-/* 404 */
+/* 402 */
 /*!*******************************************!*\
   !*** ./ClientApp/components/app/app.html ***!
   \*******************************************/
 /***/ function(module, exports) {
 
 	module.exports = "<div class='container-fluid'>\r\n    <div class='row'>\r\n        <div class='col-sm-3'>\r\n            <nav-menu></nav-menu>\r\n        </div>\r\n        <div class='col-sm-9 body-content'>\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+
+/***/ },
+/* 403 */
+/*!*****************************************************************************!*\
+  !*** ./ClientApp/components/built-with-form/built-with-form.component.html ***!
+  \*****************************************************************************/
+/***/ function(module, exports) {
+
+	module.exports = "<form [ngFormModel]=\"BuiltWithForm\">\r\n    <div  *ngIf=\"builtWith\"\r\n         flex=\"50\" flex-xs=\"100\" flex-sm=\"100\">\r\n        <input type=\"text\" ngControl=\"name\"\r\n               id=\"name\"\r\n               [(ngModel)]=\"builtWith.name\"\r\n               required />\r\n        <div layout=\"row\" >\r\n            <input type=\"checkbox\" [(checked)]=\"builtWith.pending\"\r\n                        aria-label=\"Pending\" />\r\n            \r\n            Pending\r\n        </div>\r\n        <div>\r\n            <button \r\n                    (click)=\"submit()\">\r\n                Submit\r\n            </button>\r\n            <button \r\n                    (click)=\"back()\">\r\n                Cancel\r\n            </button>\r\n        </div>\r\n    </div>\r\n</form>\r\n"
+
+/***/ },
+/* 404 */
+/*!*******************************************************************!*\
+  !*** ./ClientApp/components/built-with/built-with.component.html ***!
+  \*******************************************************************/
+/***/ function(module, exports) {
+
+	module.exports = "\r\n<div >\r\n    <responsive-table [tableData]=\"tableData\"\r\n                      (switchEventChanged)=\"update($event)\"\r\n                      (editEventClicked)=\"gotoDetail($event)\"\r\n                      (deleteEventClicked)=\"delete($event)\"\r\n                      (refreshEventClicked)=\"getDataList($event)\"\r\n                      (newEventClicked)=\"new($event)\"\r\n                      [filterColumns]=\"['name']\">\r\n    </responsive-table>\r\n</div>"
 
 /***/ },
 /* 405 */
@@ -65982,7 +65982,7 @@
   \*****************************************************/
 /***/ function(module, exports) {
 
-	module.exports = "<div class='main-nav'>\r\n        <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' >AngularUniversal</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li>\r\n                    <a  disabled>\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a  disabled>\r\n                        <span class='glyphicon glyphicon-education'></span> Reports\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a >\r\n                        <span class='glyphicon glyphicon-wrench'></span> Setup\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+	module.exports = "<div class='main-nav'>\r\n        <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' >AngularUniversal</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li>\r\n                    <a  [routerLink]=\"['/Home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <li>\r\n                    <a  [routerLink]=\"['/BuiltWith']\">\r\n                        <span class='glyphicon glyphicon-education'></span> Built with\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
 
 /***/ },
 /* 409 */
@@ -78187,7 +78187,7 @@
 	var common_1 = __webpack_require__(/*! @angular/common */ 36);
 	var router = __webpack_require__(/*! @angular/router-deprecated */ 65);
 	var http_1 = __webpack_require__(/*! @angular/http */ 146);
-	var app_1 = __webpack_require__(/*! ./components/app/app */ 642);
+	var app_1 = __webpack_require__(/*! ./components/app/app */ 640);
 	platform_browser_dynamic_1.bootstrap(app_1.App, [router.ROUTER_BINDINGS, http_1.HTTP_PROVIDERS, common_1.FormBuilder]);
 	if (false) {
 	    module.hot.accept();
@@ -78196,190 +78196,6 @@
 
 /***/ },
 /* 638 */
-/*!*************************************************************************************!*\
-  !*** ./ClientApp/components.setup/account-type-form/account-type-form.component.ts ***!
-  \*************************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(/*! @angular/core */ 2);
-	var http_crud_service_1 = __webpack_require__(/*! ../../services/http-crud.service */ 173);
-	var environments_constant_1 = __webpack_require__(/*! ../../constants/environments.constant */ 172);
-	var router_deprecated_1 = __webpack_require__(/*! @angular/router-deprecated */ 65);
-	var common_1 = __webpack_require__(/*! @angular/common */ 36);
-	var AccountTypeFormComponent = (function () {
-	    function AccountTypeFormComponent(httpCRUDService, routeParams, fb, router, envConstants) {
-	        this.httpCRUDService = httpCRUDService;
-	        this.routeParams = routeParams;
-	        this.fb = fb;
-	        this.router = router;
-	        this.envConstants = envConstants;
-	        //this.accountType = { accountTypeID: 0, accountTypeName: 'asdfasdf', isBank: true };
-	        this.builtWithForm = fb.group({
-	            'name': ['', common_1.Validators.required]
-	        });
-	        httpCRUDService.setREST(envConstants.apiEndPoint + 'crud');
-	    }
-	    AccountTypeFormComponent.prototype.ngOnInit = function () {
-	        var _this = this;
-	        var formMode = this.routeParams.get('formMode');
-	        if (formMode == 'edit') {
-	            if (!this.builtWith) {
-	                var id = +this.routeParams.get('id');
-	                this._subscription = this.httpCRUDService.get(id)
-	                    .subscribe(function (result) {
-	                    _this.builtWith = result;
-	                });
-	            }
-	        }
-	        else {
-	            this.builtWith = {
-	                name: '',
-	                pending: false,
-	                id: 0
-	            };
-	        }
-	    };
-	    AccountTypeFormComponent.prototype.ngOnDestroy = function () {
-	        //this._subscription.unsubscribe();
-	    };
-	    AccountTypeFormComponent.prototype.submit = function () {
-	        var formMode = this.routeParams.get('formMode');
-	        var _this = this;
-	        if (formMode == 'edit') {
-	            this.httpCRUDService
-	                .update(this.builtWith)
-	                .subscribe(function (r) {
-	                _this.builtWith = r;
-	                _this.router.navigate(['AccountType', {}]);
-	            });
-	        }
-	        else {
-	            this.httpCRUDService
-	                .insert(this.builtWith)
-	                .subscribe(function (r) {
-	                _this.builtWith = r;
-	                _this.router.navigate(['AccountType', {}]);
-	            });
-	        }
-	    };
-	    AccountTypeFormComponent.prototype.back = function () {
-	        //this.router.navigate(['AccountType']);
-	        //this.location.back();
-	    };
-	    AccountTypeFormComponent = __decorate([
-	        core_1.Component({
-	            selector: 'account-type-form',
-	            template: __webpack_require__(/*! ./account-type-form.component.html */ 400),
-	            directives: [router_deprecated_1.ROUTER_DIRECTIVES, common_1.FORM_DIRECTIVES]
-	        }), 
-	        __metadata('design:paramtypes', [http_crud_service_1.HttpCRUDService, router_deprecated_1.RouteParams, common_1.FormBuilder, router_deprecated_1.Router, environments_constant_1.EnvConstants])
-	    ], AccountTypeFormComponent);
-	    return AccountTypeFormComponent;
-	}());
-	exports.AccountTypeFormComponent = AccountTypeFormComponent;
-
-
-/***/ },
-/* 639 */
-/*!***************************************************************************!*\
-  !*** ./ClientApp/components.setup/account-type/account-type.component.ts ***!
-  \***************************************************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-	    return c > 3 && r && Object.defineProperty(target, key, r), r;
-	};
-	var __metadata = (this && this.__metadata) || function (k, v) {
-	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-	};
-	var core_1 = __webpack_require__(/*! @angular/core */ 2);
-	var http_crud_service_1 = __webpack_require__(/*! ../../services/http-crud.service */ 173);
-	var environments_constant_1 = __webpack_require__(/*! ../../constants/environments.constant */ 172);
-	var responsive_table_component_1 = __webpack_require__(/*! ../../components.shared/responsive-table/responsive-table.component */ 641);
-	var router_deprecated_1 = __webpack_require__(/*! @angular/router-deprecated */ 65);
-	var AccountTypeComponent = (function () {
-	    function AccountTypeComponent(httpCRUDService, router, envConstants) {
-	        this.httpCRUDService = httpCRUDService;
-	        this.router = router;
-	        this.envConstants = envConstants;
-	        this.tableData = { columnConfigList: [], crud: false, dataList: [], refresh: false };
-	        httpCRUDService.setREST(envConstants.apiEndPoint + 'crud');
-	        this.getDataList();
-	    }
-	    AccountTypeComponent.prototype.ngOnInit = function () {
-	    };
-	    AccountTypeComponent.prototype.getDataList = function () {
-	        var _this = this;
-	        this.httpCRUDService.getAll()
-	            .subscribe(function (result) {
-	            _this.tableData.dataList = result;
-	            _this.tableData.crud = true;
-	            _this.tableData.refresh = true;
-	            _this.tableData.columnConfigList = [
-	                { name: 'name', filter: true, header: 'Name', order: true, type: 'text' },
-	                { name: 'pending', filter: false, header: 'pending', order: true, type: 'switch' }
-	            ];
-	        });
-	    };
-	    AccountTypeComponent.prototype.gotoDetail = function (builtWith) {
-	        this.router.navigate(['BuiltWithForm',
-	            {
-	                formMode: 'edit',
-	                id: builtWith.id
-	            }]);
-	    };
-	    AccountTypeComponent.prototype.update = function (builtWith) {
-	        builtWith.pending = !builtWith.pending;
-	        //this.httpCRUDService.update(accountType).subscribe();
-	    };
-	    AccountTypeComponent.prototype.new = function () {
-	        this.router.navigate(['BuiltWithForm',
-	            {
-	                formMode: 'new',
-	                id: 0
-	            }]);
-	    };
-	    AccountTypeComponent.prototype.delete = function (builtWith) {
-	        //this.httpCRUDService.delete(accountType.accountTypeID)
-	        //    .subscribe(r =>
-	        //    {
-	        //        for (var i = 0; i < this.tableData.dataList.length; i++) {
-	        //            if (this.tableData.dataList[i].accountTypeID == accountType.accountTypeID) {
-	        //                this.tableData.dataList.splice(i, 1);
-	        //                break;
-	        //            }
-	        //        }
-	        //    });
-	    };
-	    AccountTypeComponent = __decorate([
-	        core_1.Component({
-	            selector: 'account-type',
-	            template: __webpack_require__(/*! ./account-type.component.html */ 401),
-	            directives: [responsive_table_component_1.ResponsiveTableComponent]
-	        }), 
-	        __metadata('design:paramtypes', [http_crud_service_1.HttpCRUDService, router_deprecated_1.Router, environments_constant_1.EnvConstants])
-	    ], AccountTypeComponent);
-	    return AccountTypeComponent;
-	}());
-	exports.AccountTypeComponent = AccountTypeComponent;
-
-
-/***/ },
-/* 640 */
 /*!**************************************************************************!*\
   !*** ./ClientApp/components.shared/filter-text/filter-text.component.ts ***!
   \**************************************************************************/
@@ -78415,7 +78231,7 @@
 	    FilterTextComponent = __decorate([
 	        core_1.Component({
 	            selector: 'filter-text',
-	            template: __webpack_require__(/*! ./filter-text.component.html */ 402),
+	            template: __webpack_require__(/*! ./filter-text.component.html */ 400),
 	            //styleUrls: [require('./filter-text.component.css')],
 	            directives: []
 	        }), 
@@ -78427,7 +78243,7 @@
 
 
 /***/ },
-/* 641 */
+/* 639 */
 /*!************************************************************************************!*\
   !*** ./ClientApp/components.shared/responsive-table/responsive-table.component.ts ***!
   \************************************************************************************/
@@ -78444,7 +78260,7 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var core_1 = __webpack_require__(/*! @angular/core */ 2);
-	var filter_text_component_1 = __webpack_require__(/*! ../filter-text/filter-text.component */ 640);
+	var filter_text_component_1 = __webpack_require__(/*! ../filter-text/filter-text.component */ 638);
 	var ResponsiveTableComponent = (function () {
 	    function ResponsiveTableComponent() {
 	        this.filterColumns = [];
@@ -78529,7 +78345,7 @@
 	    ResponsiveTableComponent = __decorate([
 	        core_1.Component({
 	            selector: 'responsive-table',
-	            template: __webpack_require__(/*! ./responsive-table.component.html */ 403),
+	            template: __webpack_require__(/*! ./responsive-table.component.html */ 401),
 	            //template:`responsive-table`,
 	            //styles: [require('./responsive-table.component.css')],
 	            directives: [filter_text_component_1.FilterTextComponent]
@@ -78542,7 +78358,7 @@
 
 
 /***/ },
-/* 642 */
+/* 640 */
 /*!*****************************************!*\
   !*** ./ClientApp/components/app/app.ts ***!
   \*****************************************/
@@ -78564,8 +78380,8 @@
 	var home_1 = __webpack_require__(/*! ../home/home */ 645);
 	var fetch_data_1 = __webpack_require__(/*! ../fetch-data/fetch-data */ 644);
 	var counter_1 = __webpack_require__(/*! ../counter/counter */ 643);
-	var account_type_component_1 = __webpack_require__(/*! ../../components.setup/account-type/account-type.component */ 639);
-	var account_type_form_component_1 = __webpack_require__(/*! ../../components.setup/account-type-form/account-type-form.component */ 638);
+	var built_with_component_1 = __webpack_require__(/*! ../../components/built-with/built-with.component */ 642);
+	var built_with_form_component_1 = __webpack_require__(/*! ../../components/built-with-form/built-with-form.component */ 641);
 	var environments_constant_1 = __webpack_require__(/*! ../../constants/environments.constant */ 172);
 	var http_crud_service_1 = __webpack_require__(/*! ../../services/http-crud.service */ 173);
 	__webpack_require__(/*! rxjs/add/operator/map */ 272);
@@ -78575,7 +78391,7 @@
 	    App = __decorate([
 	        ng.Component({
 	            selector: 'app',
-	            template: __webpack_require__(/*! ./app.html */ 404),
+	            template: __webpack_require__(/*! ./app.html */ 402),
 	            directives: [nav_menu_1.NavMenu, router.ROUTER_DIRECTIVES],
 	            providers: [
 	                environments_constant_1.EnvConstants,
@@ -78586,14 +78402,197 @@
 	            { path: '/', component: home_1.Home, name: 'Home' },
 	            { path: '/counter', component: counter_1.Counter, name: 'Counter' },
 	            { path: '/fetch-data', component: fetch_data_1.FetchData, name: 'FetchData' },
-	            { path: '/account-type', component: account_type_component_1.AccountTypeComponent, name: 'AccountType' },
-	            { path: '/account-type-form/:id', name: 'AccountTypeForm', component: account_type_form_component_1.AccountTypeFormComponent }
+	            { path: '/built-with', component: built_with_component_1.BuiltWithComponent, name: 'BuiltWith' },
+	            { path: '/built-with-form/:id', name: 'BuiltWithForm', component: built_with_form_component_1.BuiltWithFormComponent }
 	        ]), 
 	        __metadata('design:paramtypes', [])
 	    ], App);
 	    return App;
 	}());
 	exports.App = App;
+
+
+/***/ },
+/* 641 */
+/*!***************************************************************************!*\
+  !*** ./ClientApp/components/built-with-form/built-with-form.component.ts ***!
+  \***************************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(/*! @angular/core */ 2);
+	var http_crud_service_1 = __webpack_require__(/*! ../../services/http-crud.service */ 173);
+	var environments_constant_1 = __webpack_require__(/*! ../../constants/environments.constant */ 172);
+	var router_deprecated_1 = __webpack_require__(/*! @angular/router-deprecated */ 65);
+	var common_1 = __webpack_require__(/*! @angular/common */ 36);
+	var BuiltWithFormComponent = (function () {
+	    function BuiltWithFormComponent(httpCRUDService, routeParams, fb, router, envConstants) {
+	        this.httpCRUDService = httpCRUDService;
+	        this.routeParams = routeParams;
+	        this.fb = fb;
+	        this.router = router;
+	        this.envConstants = envConstants;
+	        this.builtWithForm = fb.group({
+	            'name': ['', common_1.Validators.required]
+	        });
+	        httpCRUDService.setREST(envConstants.apiEndPoint + 'crud');
+	    }
+	    BuiltWithFormComponent.prototype.ngOnInit = function () {
+	        var _this = this;
+	        var formMode = this.routeParams.get('formMode');
+	        if (formMode == 'edit') {
+	            if (!this.builtWith) {
+	                var id = +this.routeParams.get('id');
+	                this._subscription = this.httpCRUDService.get(id)
+	                    .subscribe(function (result) {
+	                    _this.builtWith = result;
+	                });
+	            }
+	        }
+	        else {
+	            this.builtWith = {
+	                name: '',
+	                pending: false,
+	                id: 0
+	            };
+	        }
+	    };
+	    BuiltWithFormComponent.prototype.ngOnDestroy = function () {
+	        //this._subscription.unsubscribe();
+	    };
+	    BuiltWithFormComponent.prototype.submit = function () {
+	        var formMode = this.routeParams.get('formMode');
+	        var _this = this;
+	        if (formMode == 'edit') {
+	            this.httpCRUDService
+	                .update(this.builtWith)
+	                .subscribe(function (r) {
+	                _this.builtWith = r;
+	                _this.router.navigate(['AccountType', {}]);
+	            });
+	        }
+	        else {
+	            this.httpCRUDService
+	                .insert(this.builtWith)
+	                .subscribe(function (r) {
+	                _this.builtWith = r;
+	                _this.router.navigate(['AccountType', {}]);
+	            });
+	        }
+	    };
+	    BuiltWithFormComponent.prototype.back = function () {
+	        //this.router.navigate(['AccountType']);
+	        //this.location.back();
+	    };
+	    BuiltWithFormComponent = __decorate([
+	        core_1.Component({
+	            selector: 'built-with-form',
+	            template: __webpack_require__(/*! ./built-with-form.component.html */ 403),
+	            directives: [router_deprecated_1.ROUTER_DIRECTIVES, common_1.FORM_DIRECTIVES]
+	        }), 
+	        __metadata('design:paramtypes', [http_crud_service_1.HttpCRUDService, router_deprecated_1.RouteParams, common_1.FormBuilder, router_deprecated_1.Router, environments_constant_1.EnvConstants])
+	    ], BuiltWithFormComponent);
+	    return BuiltWithFormComponent;
+	}());
+	exports.BuiltWithFormComponent = BuiltWithFormComponent;
+
+
+/***/ },
+/* 642 */
+/*!*****************************************************************!*\
+  !*** ./ClientApp/components/built-with/built-with.component.ts ***!
+  \*****************************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var core_1 = __webpack_require__(/*! @angular/core */ 2);
+	var http_crud_service_1 = __webpack_require__(/*! ../../services/http-crud.service */ 173);
+	var environments_constant_1 = __webpack_require__(/*! ../../constants/environments.constant */ 172);
+	var responsive_table_component_1 = __webpack_require__(/*! ../../components.shared/responsive-table/responsive-table.component */ 639);
+	var router_deprecated_1 = __webpack_require__(/*! @angular/router-deprecated */ 65);
+	var BuiltWithComponent = (function () {
+	    function BuiltWithComponent(httpCRUDService, router, envConstants) {
+	        this.httpCRUDService = httpCRUDService;
+	        this.router = router;
+	        this.envConstants = envConstants;
+	        this.tableData = { columnConfigList: [], crud: false, dataList: [], refresh: false };
+	        httpCRUDService.setREST(envConstants.apiEndPoint + 'crud');
+	        this.getDataList();
+	    }
+	    BuiltWithComponent.prototype.ngOnInit = function () {
+	    };
+	    BuiltWithComponent.prototype.getDataList = function () {
+	        var _this = this;
+	        this.httpCRUDService.getAll()
+	            .subscribe(function (result) {
+	            _this.tableData.dataList = result;
+	            _this.tableData.crud = true;
+	            _this.tableData.refresh = true;
+	            _this.tableData.columnConfigList = [
+	                { name: 'name', filter: true, header: 'Name', order: true, type: 'text' },
+	                { name: 'pending', filter: false, header: 'pending', order: true, type: 'switch' }
+	            ];
+	        });
+	    };
+	    BuiltWithComponent.prototype.gotoDetail = function (builtWith) {
+	        this.router.navigate(['BuiltWithForm',
+	            {
+	                formMode: 'edit',
+	                id: builtWith.id
+	            }]);
+	    };
+	    BuiltWithComponent.prototype.update = function (builtWith) {
+	        builtWith.pending = !builtWith.pending;
+	        //this.httpCRUDService.update(accountType).subscribe();
+	    };
+	    BuiltWithComponent.prototype.new = function () {
+	        this.router.navigate(['BuiltWithForm',
+	            {
+	                formMode: 'new',
+	                id: 0
+	            }]);
+	    };
+	    BuiltWithComponent.prototype.delete = function (builtWith) {
+	        //this.httpCRUDService.delete(accountType.accountTypeID)
+	        //    .subscribe(r =>
+	        //    {
+	        //        for (var i = 0; i < this.tableData.dataList.length; i++) {
+	        //            if (this.tableData.dataList[i].accountTypeID == accountType.accountTypeID) {
+	        //                this.tableData.dataList.splice(i, 1);
+	        //                break;
+	        //            }
+	        //        }
+	        //    });
+	    };
+	    BuiltWithComponent = __decorate([
+	        core_1.Component({
+	            selector: 'built-with',
+	            template: __webpack_require__(/*! ./built-with.component.html */ 404),
+	            directives: [responsive_table_component_1.ResponsiveTableComponent]
+	        }), 
+	        __metadata('design:paramtypes', [http_crud_service_1.HttpCRUDService, router_deprecated_1.Router, environments_constant_1.EnvConstants])
+	    ], BuiltWithComponent);
+	    return BuiltWithComponent;
+	}());
+	exports.BuiltWithComponent = BuiltWithComponent;
 
 
 /***/ },
