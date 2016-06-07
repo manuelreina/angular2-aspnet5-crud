@@ -14,6 +14,7 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
     private _subscription: Subscription;
     builtWith: IBuiltWith;
     builtWithForm: ControlGroup;
+    formTitle: string;
     constructor(private httpCRUDService: HttpCRUDService<IBuiltWith>,
         private routeParams: RouteParams,
         private fb: FormBuilder,
@@ -25,12 +26,12 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
 
         httpCRUDService.setREST(envConstants.apiEndPoint + 'crud');
     }
-    accountTypes: IBuiltWith[];
 
     ngOnInit() {
         
         var formMode = this.routeParams.get('formMode'); 
         if (formMode == 'edit') {
+            this.formTitle = "Edit";
             if (!this.builtWith) {
                 let id = +this.routeParams.get('id');
                 this._subscription = this.httpCRUDService.get(id)
@@ -40,6 +41,7 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
             }
         }
         else {
+            this.formTitle = "New";
             this.builtWith = {
                 name: '',
                 pending: false,
@@ -56,6 +58,7 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
     submit(): void {
         var formMode = this.routeParams.get('formMode');
         if (formMode == 'edit') { 
+            
             this.httpCRUDService
                 .update(this.builtWith)
                 .subscribe(r => {
@@ -64,6 +67,7 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
                 });
         }
         else {
+            
             this.httpCRUDService
                 .insert(this.builtWith)
                 .subscribe(r => {

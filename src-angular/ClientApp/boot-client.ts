@@ -3,6 +3,7 @@ import 'bootstrap';
 import 'reflect-metadata';
 import './styles/site.css';
 //TODO: import css from component itself
+import './components/app/app.css';
 import './components.shared/responsive-table/responsive-table.component.css';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 import { FormBuilder } from '@angular/common';

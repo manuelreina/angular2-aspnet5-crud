@@ -2,5 +2,9 @@
   {
     "outputFile": "ClientApp/components.shared/responsive-table/responsive-table.component.css",
     "inputFile": "ClientApp/components.shared/responsive-table/responsive-table.component.less"
+  },
+  {
+    "outputFile": "ClientApp/components/app/app.css",
+    "inputFile": "ClientApp/components/app/app.scss"
   }
 ]

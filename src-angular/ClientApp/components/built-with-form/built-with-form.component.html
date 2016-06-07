@@ -1,25 +1,24 @@
-﻿<form [ngFormModel]="builtWithForm">
-    <div  *ngIf="builtWith"
-         flex="50" flex-xs="100" flex-sm="100">
+﻿<h1 class="page-header">{{formTitle}}</h1>
+<form [ngFormModel]="builtWithForm" *ngIf="builtWith">
+    <div class="form-group">
+        <label for="name">Name</label>
         <input type="text" ngControl="name"
                id="name"
                [(ngModel)]="builtWith.name"
-               required />
-        <div >
-            <input type="checkbox" [(checked)]="builtWith.pending"
-                        aria-label="Pending" />
-            
-            Pending
-        </div>
-        <div>
-            <button 
-                    (click)="submit()">
-                Submit
-            </button>
-            <button 
-                    (click)="back()">
-                Cancel
-            </button>
-        </div>
+               placeholder="Name"
+               required>
+    </div>
+    <div class="form-group">
+        <label for="builtWithPending">Pending</label>
+        <input type="checkbox" id="builtWithPending" [(checked)]="builtWith.pending"
+               aria-label="Pending" />
+    </div>
+    <div class="form-group">
+        <button (click)="submit()" class="btn btn-primary">
+            Submit
+        </button>
+        <button (click)="back()" class="btn btn-default">
+            Cancel
+        </button>
     </div>
 </form>
