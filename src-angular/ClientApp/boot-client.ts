@@ -1,4 +1,5 @@
 require('zone.js');
+import 'bootstrap';
 import 'reflect-metadata';
 import './styles/site.css';
 //TODO: import css from component itself

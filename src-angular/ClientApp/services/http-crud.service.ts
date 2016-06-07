@@ -1,5 +1,5 @@
 ﻿import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptionsArgs, Response } from '@angular/http';
+import {Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -50,11 +50,7 @@ export class HttpCRUDService<T> {
         var result = this._http.put(this._url,
             JSON.stringify(entity),
             { headers: this._headers })
-            .map<T>((r) => r.json())
-            .finally(() => {
-                //_this._spinnerService.hide();
-                var message = toastMessage ? toastMessage : "Updated successfully";
-            });
+            .map<T>((r) => r.json());
         return result;
     }
 

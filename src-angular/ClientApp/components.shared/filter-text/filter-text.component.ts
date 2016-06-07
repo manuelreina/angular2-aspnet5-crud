@@ -10,7 +10,7 @@ export class FilterTextComponent {
   filter: string = '';
 
   constructor() {
-    this.changed = new EventEmitter();
+    this.changed = new EventEmitter<string>();
   }
 
   clear() {
