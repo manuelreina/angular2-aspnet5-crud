@@ -6,7 +6,7 @@
   .body-content {
     padding-top: 60px; } }
 
-/*bs-callout*/
+/*#region bs-callout*/
 .bs-callout {
   padding: 20px;
   margin: 20px 0;
@@ -62,4 +62,16 @@
 
 .bs-callout-info h4 {
   color: #5bc0de; }
+
+/*#endregion bs-callout*/
+/*#region form validations*/
+.ng-valid[required] {
+  border-left: 5px solid #42A948;
+  /* green */ }
+
+.ng-invalid {
+  border-left: 5px solid #a94442;
+  /* red */ }
+
+/*#endregion form validations*/
 

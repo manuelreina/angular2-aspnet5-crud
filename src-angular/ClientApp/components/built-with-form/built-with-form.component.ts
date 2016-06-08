@@ -3,26 +3,22 @@ import { HttpCRUDService } from '../../services/http-crud.service';
 import { EnvConstants } from '../../constants/environments.constant';
 import { CanDeactivate, RouteParams, ROUTER_DIRECTIVES, Router } from '@angular/router-deprecated';
 import { Subscription } from 'rxjs/Rx';
-import {FORM_DIRECTIVES, Validators, FormBuilder, ControlGroup} from '@angular/common';
+import { NgForm }    from '@angular/common';
+
 
 @Component({
     selector: 'built-with-form',
     template: require('./built-with-form.component.html'),
-    directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES]
 })
 export class BuiltWithFormComponent implements OnDestroy, OnInit {
     private _subscription: Subscription;
     builtWith: IBuiltWith;
-    builtWithForm: ControlGroup;
     formTitle: string;
     constructor(private httpCRUDService: HttpCRUDService<IBuiltWith>,
         private routeParams: RouteParams,
-        private fb: FormBuilder,
         private router: Router,
         private envConstants: EnvConstants) {
-        this.builtWithForm = fb.group({
-            'name': ['', Validators.required]
-        });
 
         httpCRUDService.setREST(envConstants.apiEndPoint + 'crud');
     }
@@ -77,10 +73,6 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
         }
 
     }
-
-    back(): void {
-        //this.router.navigate(['AccountType']);
-        //this.location.back();
-    }
+    
     
 }

@@ -39,7 +39,7 @@ export class BuiltWithComponent implements OnInit {
                 this.tableData.refresh = true;
                 this.tableData.columnConfigList = [
                     { name: 'name', filter: true, header: 'Name', order: true, type: 'text' },
-                    { name: 'pending', filter: false, header: 'pending', order: true, type: 'switch' }
+                    { name: 'pending', filter: false, header: 'Pending', order: true, type: 'switch' }
                 ];
             });
     }
