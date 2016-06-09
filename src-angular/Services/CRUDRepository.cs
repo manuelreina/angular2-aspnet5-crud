@@ -20,9 +20,13 @@ namespace AngularUniversal.Services
     {
         static List<BuiltWith> builtWithList = new List<BuiltWith>
         {
-                new BuiltWith { ID = 1, Name = "Angular 2", Pending = false },
+                new BuiltWith { ID = 1, Name = "Angular 2 + TypeScript", Pending = false },
                 new BuiltWith { ID = 2, Name = "Asp.net Core", Pending = false },
+                new BuiltWith { ID = 3, Name = "Progressive Web Apps", Pending = false },
                 new BuiltWith { ID = 3, Name = "Webpack", Pending = false },
+                new BuiltWith { ID = 3, Name = "Grunt", Pending = false },
+                new BuiltWith { ID = 3, Name = "Bootstrap", Pending = false },
+                new BuiltWith { ID = 3, Name = "Angular Material 2", Pending = true },
         };
 
         public void Add(BuiltWith item)

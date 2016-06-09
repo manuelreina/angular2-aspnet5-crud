@@ -31,4 +31,4 @@ module.exports = merge({
         new webpack.optimize.OccurenceOrderPlugin(),
         extractCSS
     ]
-}, prodConfig);
+}, isDevelopment ? devConfig : prodConfig);

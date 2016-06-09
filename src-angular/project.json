@@ -44,5 +44,14 @@
     "**.xproj",
     "**.user",
     "**.vspscc"
-  ]
+  ],
+  "scripts": {
+    "prepare": [
+      "npm install",
+      "webpack --config webpack.config.vendor.js"
+    ],
+    "prepublish": [
+      "webpack"
+    ]
+  }
 }
