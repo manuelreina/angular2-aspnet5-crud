@@ -14,58 +14,49 @@ export class HttpCRUDService<T> {
         this._headers.append('Content-Type', 'application/json');
     }
     _headers: Headers;
-    _url: string;
 
 
     setHeaders(headers: Headers): void {
         this._headers = headers;
     }
+    
 
-    setREST(api: string, params?: string) {
-        this._url = api;
-        
-    }
-
-    checkREST(): void {
-        
-    }
-
-    getAll(options?: RequestOptionsArgs): Observable<T[]> {
+    getAll(url: string, options?: RequestOptionsArgs): Observable<T[]> {
         //this._spinnerService.show();
-        var result = this._http.get(this._url)
+        var result = this._http.get(url)
             .map<T[]>((r) => r.json());
                 
         return result;
     }
 
-    get(id:number, options?: RequestOptionsArgs): Observable<T> {
-        var result = this._http.get(`${this._url}/${id}`)
+    get(url: string, id:number, options?: RequestOptionsArgs): Observable<T> {
+        var result = this._http.get(`${url}/${id}`)
             .map<T>((r) => r.json());
         return result;
     }
 
-    update(entity: any, options?: RequestOptionsArgs, toastMessage?: string): Observable<any> {
+    update(url: string, entity: any, options?: RequestOptionsArgs, toastMessage?: string): Observable<any> {
         //this._spinnerService.show();
         
-        var result = this._http.put(this._url,
+        var result = this._http.put(url,
             JSON.stringify(entity),
             { headers: this._headers })
             .map<T>((r) => r.json());
         return result;
     }
 
-    insert(entity: T, options?: RequestOptionsArgs, toastMessage?: string): Observable<T> {
+    insert(url: string, entity: T, options?: RequestOptionsArgs, toastMessage?: string): Observable<T> {
         //this._spinnerService.show();
-        var result = this._http.post(this._url,
+        var result = this._http.post(url,
             JSON.stringify(entity),
             { headers: this._headers })
             .map<T>((r) => r.json());
         return result;
     }
 
-    delete(id: number, toastMessage?: string): Observable<T> {
+    delete(url: string, id: number, toastMessage?: string): Observable<T> {
         //this._spinnerService.show();
-        var result = this._http.delete(`${this._url}/${id}`)
+        var result = this._http.delete(`${url}/${id}`)
             .map<T>((r) => r.json());
         return result;
     }

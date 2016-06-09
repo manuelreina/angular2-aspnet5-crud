@@ -19,8 +19,7 @@ export class BuiltWithComponent implements OnInit {
         private router: Router,
         private envConstants: EnvConstants
     ) {
-
-        httpCRUDService.setREST(envConstants.apiEndPoint + 'crud');
+        
         this.getDataList();
         
     }
@@ -32,7 +31,7 @@ export class BuiltWithComponent implements OnInit {
     }
 
     getDataList() {
-        this.httpCRUDService.getAll()
+        this.httpCRUDService.getAll(this.envConstants.apiEndPoint + 'crud')
             .subscribe(result => {
                 this.tableData.dataList = result;
                 this.tableData.crud = true;
@@ -54,7 +53,7 @@ export class BuiltWithComponent implements OnInit {
 
     update(builtWith: IBuiltWith) {
         builtWith.pending = !builtWith.pending;
-        //this.httpCRUDService.update(accountType).subscribe();
+        this.httpCRUDService.update(this.envConstants.apiEndPoint + 'crud', builtWith).subscribe();
     }
 
     new() {
@@ -66,7 +65,7 @@ export class BuiltWithComponent implements OnInit {
     }
 
     delete(builtWith: IBuiltWith) {
-        this.httpCRUDService.delete(builtWith.id)
+        this.httpCRUDService.delete(this.envConstants.apiEndPoint + 'crud', builtWith.id)
             .subscribe(r =>
             {
                 for (var i = 0; i < this.tableData.dataList.length; i++) {

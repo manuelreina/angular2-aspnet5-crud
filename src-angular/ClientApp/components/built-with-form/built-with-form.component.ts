@@ -19,8 +19,7 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
         private routeParams: RouteParams,
         private router: Router,
         private envConstants: EnvConstants) {
-
-        httpCRUDService.setREST(envConstants.apiEndPoint + 'crud');
+        
     }
 
     ngOnInit() {
@@ -30,7 +29,7 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
             this.formTitle = "Edit";
             if (!this.builtWith) {
                 let id = +this.routeParams.get('id');
-                this._subscription = this.httpCRUDService.get(id)
+                this._subscription = this.httpCRUDService.get(this.envConstants.apiEndPoint + 'crud', id)
                     .subscribe((result) => {
                         this.builtWith = result;
                     });
@@ -56,7 +55,7 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
         if (formMode == 'edit') { 
             
             this.httpCRUDService
-                .update(this.builtWith)
+                .update(this.envConstants.apiEndPoint + 'crud', this.builtWith)
                 .subscribe(r => {
                     this.builtWith = r;
                     this.router.navigate(['BuiltWith', {}]);
@@ -65,7 +64,7 @@ export class BuiltWithFormComponent implements OnDestroy, OnInit {
         else {
             
             this.httpCRUDService
-                .insert(this.builtWith)
+                .insert(this.envConstants.apiEndPoint + 'crud', this.builtWith)
                 .subscribe(r => {
                     this.builtWith = r;
                     this.router.navigate(['BuiltWith', {}]);

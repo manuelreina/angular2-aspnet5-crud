@@ -1,15 +1,15 @@
 ﻿<!-- Responsive table starts here -->
 <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
-<!--<div class="button-action" >
+<div class="button-action visible-xs" >
     <button (click)="refreshClicked($event)"
             type="button" class="btn btn-default" aria-label="Bold">
         <span class="glyphicon glyphicon-refresh"></span>
     </button>
     <button (click)="newClicked($event)"
-            type="button" class="btn btn-default" aria-label="Bold">
+            type="button" class="btn btn-primary" aria-label="Bold">
         <span class="glyphicon glyphicon-plus"></span>
     </button>
-</div>-->
+</div>
 <filter-text (changed)="filterChanged($event)"
              *ngIf="filterColumns.length > 0">
 </filter-text>
@@ -29,7 +29,7 @@
                             <span class="glyphicon glyphicon-refresh"></span>
                         </button>
                         <button (click)="newClicked($event)"
-                                type="button" class="btn btn-default" aria-label="Bold">
+                                type="button" class="btn btn-primary" aria-label="Bold">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
 
@@ -55,11 +55,11 @@
                 <td>
                     <div>
                         <button (click)="editClicked($event, item)"
-                                type="button" class="btn btn-default" aria-label="Bold">
+                                type="button" class="btn btn-primary" aria-label="Bold">
                             <span class="glyphicon glyphicon-edit"></span>
                         </button>
                         <button (click)="deleteClicked($event, item)"
-                                type="button" class="btn btn-default" aria-label="Bold">
+                                type="button" class="btn btn-warning" aria-label="Bold">
                             <span class="glyphicon glyphicon-remove"></span>
                         </button>
 
