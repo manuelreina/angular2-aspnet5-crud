@@ -1,6 +1,7 @@
 ﻿{
   "short_name": "Angular Universal",
   "name": "Angular Universal",
+  "start_url": "./?utm_source=web_app_manifest",
   "gcm_sender_id": "277279983477",
   "icons": [
     {
