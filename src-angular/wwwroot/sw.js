@@ -27,7 +27,7 @@
 
 
 /* eslint-disable quotes, comma-spacing */
-var PrecacheConfig = [["dist/styles.css","5b6f37dc7e6a029d468c745cef2fc13c"],["dist/vendor.css","3f84143b347b6972a1d834e514de3bbb"],["dist/vendor.js","65cedab63e6965d743bb2223a51559ba"]];
+var PrecacheConfig = [["dist/main.js","5a59fbb6ce41d6690a0a1239eb7f91ec"],["dist/styles.css","0003425825c15b7ce6e3e7f7561a6ded"],["dist/vendor.css","3f84143b347b6972a1d834e514de3bbb"],["dist/vendor.js","65cedab63e6965d743bb2223a51559ba"]];
 /* eslint-enable quotes, comma-spacing */
 var CacheNamePrefix = 'sw-precache-v1-angular-universal-' + (self.registration ? self.registration.scope : '') + '-';
 
@@ -233,4 +233,4 @@ self.addEventListener('push', function (event) {
           tag: 'Push Notification'
       }));
 });
-/* @preserve Wed, 08 Jun 2016 11:30:33 GMT */
+/* @preserve Fri, 10 Jun 2016 14:40:21 GMT */
