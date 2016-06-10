@@ -1,0 +1,13 @@
+﻿<h1 class="page-header">Push Notifications</h1>
+<div >
+    <label for="enablePN">Enable Push Notifications</label>
+    <input type="checkbox" id="enablePN" [checked]="subscribiption" (change)="changeSubscription($event)"
+           aria-label="Pending" />
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Notification message" [(ngModel)]="message">
+        <span class="input-group-btn">
+            <input type="button" class="btn btn-default" value="Send Push Notification" (click)="sendPushNotification()" />
+        </span>
+    </div>
+    
+</div>

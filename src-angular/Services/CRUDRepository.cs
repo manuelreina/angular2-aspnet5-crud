@@ -26,7 +26,7 @@ namespace AngularUniversal.Services
                 new BuiltWith { ID = 3, Name = "Webpack", Pending = false },
                 new BuiltWith { ID = 3, Name = "Grunt", Pending = false },
                 new BuiltWith { ID = 3, Name = "Bootstrap", Pending = false },
-                new BuiltWith { ID = 3, Name = "Angular Material 2", Pending = true },
+                new BuiltWith { ID = 3, Name = "Angular Material 2", Pending = true }
         };
 
         public void Add(BuiltWith item)

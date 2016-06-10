@@ -1,6 +1,7 @@
 ﻿{
   "short_name": "Angular Universal",
   "name": "Angular Universal",
+  "gcm_sender_id": "277279983477",
   "icons": [
     {
       "src": "launcher-icon/launcher-icon-0-75x.png",

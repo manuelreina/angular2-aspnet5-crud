@@ -223,5 +223,14 @@ self.addEventListener('fetch', function(event) {
   }
 });
 
-
+self.addEventListener('push', function (event) {
+    console.log('Push message', event);
+    var title = 'Push message';
+    event.waitUntil(
+      self.registration.showNotification(title, {
+          body: 'This is a push notification test',
+          icon: 'launcher-icon/launcher-icon-1x.png',
+          tag: 'Push Notification'
+      }));
+});
 /* @preserve Wed, 08 Jun 2016 11:30:33 GMT */

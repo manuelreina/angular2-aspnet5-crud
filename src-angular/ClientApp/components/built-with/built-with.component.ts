@@ -19,15 +19,12 @@ export class BuiltWithComponent implements OnInit {
         private router: Router,
         private envConstants: EnvConstants
     ) {
-        
         this.getDataList();
-        
     }
 
     
 
     ngOnInit() {
-        
     }
 
     getDataList() {
