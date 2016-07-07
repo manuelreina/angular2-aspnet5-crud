@@ -1,26 +1,5 @@
-﻿<tr>
-    <td data-title="Name">
-        <div class="cell-text">
-            {{builtWith.name}}
-        </div>
-        <div>
-            <input type="checkbox"
-                   [checked]="builtWith.pending" aria-label="column.header"/>
-
-        </div>
-
-    </td>
-    <td>
-        <div>
-            <button (click)="editClicked($event, item)"
-                    type="button" class="btn btn-primary" aria-label="Bold">
-                <span class="glyphicon glyphicon-edit"></span>
-            </button>
-            <button (click)="deleteClicked($event, item)"
-                    type="button" class="btn btn-warning" aria-label="Bold">
-                <span class="glyphicon glyphicon-remove"></span>
-            </button>
-
-        </div>
-    </td>
-</tr>
+﻿<h1 class="page-header">Built with</h1>
+<div>
+    
+    <built-with-list></built-with-list>
+</div>

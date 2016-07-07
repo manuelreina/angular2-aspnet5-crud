@@ -1,0 +1,42 @@
+﻿<div class="button-action visible-xs">
+    <button (click)="refreshClicked($event)"
+            type="button" class="btn btn-default" aria-label="Bold">
+        <span class="glyphicon glyphicon-refresh"></span>
+    </button>
+    <input type="button" [routerLink]="['/BuiltWithAdd']" class="btn btn-default" value="Add" />
+</div>
+<div class="table-responsive-vertical shadow-z-1">
+    <!-- Table starts here -->
+    <table id="table" class="table table-hover table-mc-light-blue">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th class="table-action">
+                    <div>
+                        <button 
+                                type="button" class="btn btn-default" aria-label="Bold">
+                            <span class="glyphicon glyphicon-refresh"></span>
+                        </button>
+                        
+                        <a [routerLink]="['/BuiltWithAdd']">
+                            <span class='glyphicon glyphicon-plus'></span> 
+                        </a>
+
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="#built of builtWithList | async">
+                <built-with-item [name]="built.name" [pending]="built.pending"></built-with-item>
+                <td>
+                    <div>
+                        <a [routerLink]="['/BuiltWithUpdate', {id: built.id}]">
+                            <span class='glyphicon glyphicon-edit'></span> 
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
