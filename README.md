@@ -1,17 +1,15 @@
-# angular2-aspnet5-crud
+# aspnetcore-angular7-angularuniversal
 
-This progressive web app is composed of 2 pages, the home page and a simple CRUD page.
+I have tried to use the latest asp.net core template for angular but the SSR doesn't work due to the following compilation error.
+```
+ERROR in ./node_modules/aspnet-prerendering/Prerendering.js
+Module not found : error : Can't resolve 'domain' in '/My_Project_Path/ClientApp/node_modules/aspnet-prerendering' [/My_Project_Path/My_Project.csproj]
+  ERROR in ./node_modules/domain-context/lib/index.js
+Module not found : error : Can't resolve 'domain' in '/My_Project_Path/ClientApp/node_modules/domain-context/lib' [/My_Project_Path/My_Project.csproj]
+  ERROR in ./node_modules/domain-task/main.js
+Module not found : error : Can't resolve 'domain' in '/My_Project_Path/ClientApp/node_modules/domain-task' [/My_Project_Path/My_Project.csproj]
+```
 
-**BUILT WITH**
-
- - Angular 2
- - ASP.NET Core
- - Angular Universal
- - Progressive Web Apps
- - Webpack
- - Grunt
-
-
-I have written this [post](http://manuelreina.github.io/angular-universal-asp-net-core-pwa/) which summarizes all the steps and the issues I had in order to put everything together.
-
-You can see the demo [here](https://angularuniversal-vnext.azurewebsites.net/). It's a free azure resource, so sorry for the slow load time.
+The following issues could help:
+https://github.com/aspnet/AspNetCore/issues/5184
+https://github.com/MarkPieszak/aspnetcore-angular-universal/issues/609
