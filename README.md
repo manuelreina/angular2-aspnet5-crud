@@ -1,6 +1,6 @@
 # aspnetcore-angular7-angularuniversal
 
-I have tried to use the latest asp.net core template for angular but the SSR doesn't work due to the following compilation error.
+I have tried to use the latest asp.net core template for angular 7 but the SSR doesn't work due to the following compilation error.
 ```
 ERROR in ./node_modules/aspnet-prerendering/Prerendering.js
 Module not found : error : Can't resolve 'domain' in '/My_Project_Path/ClientApp/node_modules/aspnet-prerendering' [/My_Project_Path/My_Project.csproj]
