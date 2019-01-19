@@ -5,8 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --project client-app",
-    "build:ssr_ignore_dash_dash_watch_from_AngularCliBuilderDotCS": "ng build --configuration=production --project=server-app ",
-    "build:ssr": "npm run build:ssr_ignore_dash_dash_watch_from_AngularCliBuilderDotCS",
+    "build:ssr": "ng build --project server-app ",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

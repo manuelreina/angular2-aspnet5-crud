@@ -2,7 +2,8 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "module": "commonjs"
+    "module": "commonjs",
+    "types": ["node"]
   },
   "angularCompilerOptions": {
     "entryModule": "app/app.server.module#AppServerModule"
