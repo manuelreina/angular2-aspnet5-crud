@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AngularUniversalRc2.Controllers
+namespace aspnet_angular_ssr_pwa.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller
@@ -36,7 +36,7 @@ namespace AngularUniversalRc2.Controllers
             {
                 get
                 {
-                    return 32 + (int)(this.TemperatureC / 0.5556);
+                    return 32 + (int)(TemperatureC / 0.5556);
                 }
             }
         }
