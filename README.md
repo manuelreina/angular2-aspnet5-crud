@@ -1,4 +1,4 @@
-# angular2-aspnet5-crud
+# angular2-aspnet5-crud (outdated)
 
 This progressive web app is composed of 2 pages, the home page and a simple CRUD page.
 
